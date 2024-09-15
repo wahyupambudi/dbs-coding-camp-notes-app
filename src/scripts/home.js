@@ -1,7 +1,6 @@
 import formValidation from "./form-validation.js";
 import defaultData from "./data.js";
 
-
 let TODOS = [];
 const RENDER_EVENT = "RENDER_EVENT";
 
@@ -83,4 +82,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 import "./card.js";
+import "./form.js";
 import "./footer.js";
