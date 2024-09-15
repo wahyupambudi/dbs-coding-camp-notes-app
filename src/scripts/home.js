@@ -75,7 +75,7 @@ document.addEventListener(RENDER_EVENT, function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // formValidation();
+  formValidation();
 
   TODOS = defaultData;
 
