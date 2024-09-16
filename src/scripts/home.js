@@ -46,8 +46,8 @@ formInput.addEventListener("submit", (e) => {
   const title = formInput.elements.title.value;
   const body = formInput.elements.body.value;
 
-  console.log(title);
-  console.log(body);
+  // console.log(title);
+  // console.log(body);
 
   TODOS.push({
     id: +new Date(),
