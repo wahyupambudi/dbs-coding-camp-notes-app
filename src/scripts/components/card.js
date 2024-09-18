@@ -1,8 +1,8 @@
-class BookItem extends HTMLElement {
+class notesItem extends HTMLElement {
   static observedAttributes = [
     "id",
     "title",
-    "author",
+    "body",
     "borrowing-date",
     "deadline",
     "index",
@@ -13,7 +13,7 @@ class BookItem extends HTMLElement {
 
     this._id = this.getAttribute("id");
     this._title = this.getAttribute("title");
-    this._author = this.getAttribute("author");
+    this._body = this.getAttribute("body");
     this["_borrowing-date"] = this.getAttribute("borrowing-date");
     this._deadline = this.getAttribute("deadline");
     this._index = parseInt(this.getAttribute("index"));
@@ -39,32 +39,61 @@ class BookItem extends HTMLElement {
       }),
     );
   }
+
+  handleUnarchived() {
+    this.dispatchEvent(
+      new CustomEvent("unarchived-notes", {
+        detail: {
+          id: this._id,
+        },
+        bubbles: true,
+      }),
+    );
+  }
   connectedCallback() {
     this.render();
   }
 
   render() {
+    // Cek apakah note-item ini berada di dalam elemen dengan id 'notes-lists-archived'
+    const isArchived = this.closest("#notes-lists-archived");
+    const isNotArchived = this.closest("#notes-lists");
+
     this.innerHTML = `
-            <div class="card" data-aos="flip-up" data-aos-duration="500" data-aos-delay="${
-              50 * this._index
-            }">
-                <div>
-                    <p class="text-title">${this._title}</p>
-                    <p class="text-author">Penulis : ${this._author}</p>
-                    
-                </div>
-                <delete-button data-id=${this._id}></delete-button>
-                <edit-button data-id=${this._id}></edit-button>
-            </div>
-        `;
+    <div class="card" data-aos="flip-up" data-aos-duration="500" data-aos-delay="${
+      50 * this._index
+    }">
+        <div>
+            <p class="text-title">${this._title}</p>
+            <p class="text-author">${this._body}</p>
+        </div>
+        <delete-button data-id=${this._id}></delete-button>
+        ${
+          isArchived
+            ? "" // Jika diarsipkan, edit-button tidak ditampilkan
+            : `<edit-button data-id=${this._id}></edit-button>` // Jika tidak diarsipkan, tampilkan edit-button
+        }
+        ${
+          isNotArchived
+            ? "" // Jika diarsipkan, edit-button tidak ditampilkan
+            : `<unarchived-button data-id=${this._id}></unarchived-button>` // Jika tidak diarsipkan, tampilkan edit-button
+        }
+    </div>
+`;
+
     const deleteButton = this.querySelector("delete-button");
     const editButton = this.querySelector("edit-button");
+    const unarchivedButton = this.querySelector("unarchived-button");
 
     if (deleteButton) {
       deleteButton.addEventListener("click", this.handleDelete);
     }
     if (editButton) {
       editButton.addEventListener("click", this.handleUpdate);
+    }
+
+    if (unarchivedButton) {
+      unarchivedButton.addEventListener("click", this.handleUnarchived);
     }
   }
 
@@ -74,4 +103,4 @@ class BookItem extends HTMLElement {
   }
 }
 
-customElements.define("book-item", BookItem);
+customElements.define("note-item", notesItem);

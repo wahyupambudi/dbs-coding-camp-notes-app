@@ -1,4 +1,4 @@
-class EditButton extends HTMLElement {
+class UnarchivedButton extends HTMLElement {
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: "open" });
@@ -12,8 +12,8 @@ class EditButton extends HTMLElement {
     this._shadowRoot.innerHTML = `
             <style>
                 button {
-                    color: black;
-                    background-color: #ffc107;
+                    color: white;
+                    background-color: #28a745;
                     width:100%;
                     padding: 6px;
                     border-radius: 4px;
@@ -21,9 +21,9 @@ class EditButton extends HTMLElement {
                     cursor: pointer;
                 }
             </style>
-            <button>Archive</button>
+            <button>Unarchive</button>
         `;
   }
 }
 
-customElements.define("edit-button", EditButton);
+customElements.define("unarchived-button", UnarchivedButton);

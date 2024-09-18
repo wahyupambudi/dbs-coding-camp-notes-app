@@ -18,20 +18,20 @@ class BookForm extends HTMLElement {
         >
             <form-control
                 input-name="title"
-                label="Judul Buku"
-                placeholder="mis : Belajar JavaScript Untuk Pemula"
+                label="Title Notes"
+                placeholder="ex : Eating Rendang"
                 min-length="3"
-                description="Isi dengan judul buku (min 3 karakter)"
+                description="Fill with title notes minimum length 3 character :) "
             ></form-control>
             <form-control
-                input-name="author"
-                label="Nama Penulis"
-                placeholder="mis : Dicoding Indonesia"
+                input-name="body"
+                label="Body Notes"
+                placeholder="ex: Eating rendang with mom tomorrow"
                 min-length="3"
-                description="Isi dengan nama penulis buku (min 3 karakter)"
+                description="Fill with body notes minimum length 3 character :)"
             ></form-control>
 
-            <button class="btn btn-primary" id="save-button">Simpan</button>
+            <button class="btn btn-primary" id="save-button">Submit</button>
         </form>`;
   }
 }

@@ -1,6 +1,6 @@
 const formValidation = (formInput) => {
   const titleFormInput = formInput.elements.title;
-  const authorFormInput = formInput.elements.author;
+  const bodyFormInput = formInput.elements.body;
 
   const blurEventHandler = (event) => {
     const isValid = event.target.validity.valid;
@@ -26,13 +26,13 @@ const formValidation = (formInput) => {
   const customValidationMinChar = (event) => {
     event.target.setCustomValidity("");
     if (event.target.validity.valueMissing) {
-      event.target.setCustomValidity("Wajib diisi.");
+      event.target.setCustomValidity("Please fill out this field.");
       return;
     }
 
     if (event.target.validity.tooShort) {
       event.target.setCustomValidity(
-        "Minimal panjang adalah tiga karakter ya ges",
+        " Fill with minimum length 3 character :) ",
       );
       return;
     }
@@ -42,9 +42,9 @@ const formValidation = (formInput) => {
   titleFormInput.addEventListener("invalid", customValidationMinChar);
   titleFormInput.addEventListener("blur", blurEventHandler);
 
-  authorFormInput.addEventListener("change", customValidationMinChar);
-  authorFormInput.addEventListener("invalid", customValidationMinChar);
-  authorFormInput.addEventListener("blur", blurEventHandler);
+  bodyFormInput.addEventListener("change", customValidationMinChar);
+  bodyFormInput.addEventListener("invalid", customValidationMinChar);
+  bodyFormInput.addEventListener("blur", blurEventHandler);
 };
 
 export default formValidation;

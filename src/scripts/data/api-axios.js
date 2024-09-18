@@ -42,24 +42,24 @@ apiClient.interceptors.response.use(
   },
 );
 
-async function getAllBooks() {
+async function getAllNotes() {
   const response = await apiClient.get("/list");
   return response.data.books;
 }
 
-async function addBook({ id, title, author }) {
+async function addNotes({ id, title, author }) {
   const response = await apiClient.post("/add", { id, title, author });
   return response.data;
 }
 
-async function editBook({ id, title, author }) {
+async function editNotes({ id, title, author }) {
   const response = await apiClient.put(`/edit/${id}`, { title, author });
   return response.data;
 }
 
-async function deleteBook(id) {
+async function deleteNotes(id) {
   const response = await apiClient.delete(`/delete/${id}`);
   return response.data.books;
 }
 
-export { getAllBooks, addBook, editBook, deleteBook };
+export { getAllNotes, addNotes, editNotes, deleteNotes };
