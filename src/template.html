@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App Final Project</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="nav justify-content-center bg-primary mb-3 p-2 text-white">
+      <nav>
+        <h1>Notes App</h1>
+      </nav>
+    </header>
+
+    <main>
+      <section id="book-form" class="card">
+        <book-form form-id="add-form"></book-form>
+      </section>
+
+      <section class="book-container" id="book-container">
+        <h2>List Of Notes</h2>
+        <div id="loading"></div>
+        <div id="notes-lists"></div>
+      </section>
+
+      <section class="book-container-a" id="book-container-a">
+        <h2>List Of Notes Archived</h2>
+        <div id="loadingx"></div>
+        <div id="notes-lists-archived"></div>
+      </section>
+    </main>
+
+    <app-footer></app-footer>
+  </body>
+</html>
